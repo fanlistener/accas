@@ -1,0 +1,51 @@
+baseURL: https://fanlistener.github.io/accas
+canonifyurls: true
+languageCode: ja
+defaultContentLanguage: ja
+publishDir: docs
+paginate: 5
+title: Actor Caster
+theme: PaperMod
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+
+languages:
+  ja:
+    languageName: 日本語
+    weight: 1
+    homeInfoParams:
+      Title: Actor Caster / AcCas
+      Content: >-
+        - AcCasについて、説明していくかもしれないサイトです。
+
+    menu:
+      main:
+        - name: 概要
+          url: overview/
+          weight: 1
+        - name: 説明書
+          url: description/
+          weight: 2
+        - name: 利用コンテンツ
+          url: content/
+          weight: 3
+    socialIcons:
+      - name: Youtube
+        url: https://www.youtube.com/channel/UCd4Nll5eehyTfcVdAxJxNJQ
+      - name: Twitter
+        url: https://twitter.com/fanlistener
+      - name: github
+        url: https://github.com/ActorCaster/accas
+
+params:
+  title: Actor Caster
+  description: Actor Casterを語るサイト
+  author: fanlistener
+  keywords: [actorcaster, accas, アクキャス, アクターキャスター]
+  DateFormat: "2006年 January 2日"
+  ShowBreadCrumbs: true

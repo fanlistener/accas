@@ -1,0 +1,5 @@
+# ignore ide setting file
+.idea/
+
+# ignore build file
+.hugo_build.lock

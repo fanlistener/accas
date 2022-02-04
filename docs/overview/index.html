@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>概要 | Actor Caster</title>
+<meta name="keywords" content="" />
+<meta name="description" content="What 　Actor Caster(AcCas) とは、コメントとユーザ情報をもとに、立ち絵素材と読み上げエンジンを組み合わせて、画面に立ち絵を表示・読み上げするソフトウェアです。
+日本語的な読み方は アクターキャスター または アクキャス と読みます。
+　Youtubeパートナープログラム(以下、YPP)などの収益化を有効にした状態での利用も想定しており、エンジンや立ち絵はYPPでの利用可能と記載があるもの、もしくは個別で許可をいただいたものに限定しています。
+　そのため「商用利用禁止」などの記載があるエンジン、立ち絵は原則利用しておりません。
+Why 　「配信でコメントしてくれる人を声と絵で具現化し、新しい紲を作り出す」 といった紲星あかり創作活動の一環。配信を見た人から新しい読み上げ実況者を生み出すことも目論んでいる
+という設定です。
+実際は24時間以上配信で0コメントという「オン会0人」を記録した、声なし配信者がライブ配信で「どうしたらコメントを継続的に貰えるか」を考えたことが製作のきっかけです。ただ単にｱｶﾘﾁｬﾝｶﾜｲｲﾔｯﾀｰがやりたかったとか、某エンジンのAPI提供が2022年にありそうだからとかもあります。
+読み上げエンジンの追加条件  動画投稿サイトの収益化を有効にした状態での利用が認められていること 音声出力の外部連携機能があること 動画投稿サイトの収益化を有効にした状態で利用できる立ち絵があること  立ち絵の追加条件  性的な表現など一般的な動画投稿サイトで禁止されていない立ち絵であること 動画投稿サイトで収益化を有効にした状態での利用が認められていること 立ち絵用に作られた素材であること  ※「動画投稿サイト」については、今のところYoutubeのみに限定しています。
+謝辞など 　本ソフトウェアは各読み上げエンジン、および立ち絵素材により構成されたソフトウェアとなっております。そのため、各コンテンツを提供されているクリエイターの方々には大変感謝しております。
+コンテンツの利用規約を一読し、fanlistener(ふぁん) 個人の解釈のもと利用しております。
+　もし、著作者の方で利用規約に反していると判断された場合、YoutubeチャンネルのメールアドレスやTwitterのダイレクトまでご連絡ください。
+場合によっては該当コンテンツ利用の停止も検討いたします。
+その他 　ソース公開は今のところ予定していません。頒布するために許可が必要そうなものがあったりとか、公開できるレベルにするまで準備が面倒だからとか、 規模の割にテストコードも書いてないポンコツだからとか理由は色々とあります。
+　エンジンに文字列を読み込ませる部分や、目パチや口パクなどを含めた一連のアニメーション部分、立ち絵の切り替え処理などは全てふぁんが独自に作っているので、1つ立ち絵を追加するにも結構時間がかかります。
+もし、追加依頼をいただいても、即対応できる訳ではないためご注意ください。">
+<meta name="author" content="fanlistener">
+<link rel="canonical" href="https://fanlistener.github.io/accas/overview/" />
+<link crossorigin="anonymous" href="https://fanlistener.github.io/accas/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="https://fanlistener.github.io/accas/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://fanlistener.github.io/accas/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://fanlistener.github.io/accas/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://fanlistener.github.io/accas/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://fanlistener.github.io/accas/apple-touch-icon.png">
+<link rel="mask-icon" href="https://fanlistener.github.io/accas/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.92.1" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="概要" />
+<meta property="og:description" content="What 　Actor Caster(AcCas) とは、コメントとユーザ情報をもとに、立ち絵素材と読み上げエンジンを組み合わせて、画面に立ち絵を表示・読み上げするソフトウェアです。
+日本語的な読み方は アクターキャスター または アクキャス と読みます。
+　Youtubeパートナープログラム(以下、YPP)などの収益化を有効にした状態での利用も想定しており、エンジンや立ち絵はYPPでの利用可能と記載があるもの、もしくは個別で許可をいただいたものに限定しています。
+　そのため「商用利用禁止」などの記載があるエンジン、立ち絵は原則利用しておりません。
+Why 　「配信でコメントしてくれる人を声と絵で具現化し、新しい紲を作り出す」 といった紲星あかり創作活動の一環。配信を見た人から新しい読み上げ実況者を生み出すことも目論んでいる
+という設定です。
+実際は24時間以上配信で0コメントという「オン会0人」を記録した、声なし配信者がライブ配信で「どうしたらコメントを継続的に貰えるか」を考えたことが製作のきっかけです。ただ単にｱｶﾘﾁｬﾝｶﾜｲｲﾔｯﾀｰがやりたかったとか、某エンジンのAPI提供が2022年にありそうだからとかもあります。
+読み上げエンジンの追加条件  動画投稿サイトの収益化を有効にした状態での利用が認められていること 音声出力の外部連携機能があること 動画投稿サイトの収益化を有効にした状態で利用できる立ち絵があること  立ち絵の追加条件  性的な表現など一般的な動画投稿サイトで禁止されていない立ち絵であること 動画投稿サイトで収益化を有効にした状態での利用が認められていること 立ち絵用に作られた素材であること  ※「動画投稿サイト」については、今のところYoutubeのみに限定しています。
+謝辞など 　本ソフトウェアは各読み上げエンジン、および立ち絵素材により構成されたソフトウェアとなっております。そのため、各コンテンツを提供されているクリエイターの方々には大変感謝しております。
+コンテンツの利用規約を一読し、fanlistener(ふぁん) 個人の解釈のもと利用しております。
+　もし、著作者の方で利用規約に反していると判断された場合、YoutubeチャンネルのメールアドレスやTwitterのダイレクトまでご連絡ください。
+場合によっては該当コンテンツ利用の停止も検討いたします。
+その他 　ソース公開は今のところ予定していません。頒布するために許可が必要そうなものがあったりとか、公開できるレベルにするまで準備が面倒だからとか、 規模の割にテストコードも書いてないポンコツだからとか理由は色々とあります。
+　エンジンに文字列を読み込ませる部分や、目パチや口パクなどを含めた一連のアニメーション部分、立ち絵の切り替え処理などは全てふぁんが独自に作っているので、1つ立ち絵を追加するにも結構時間がかかります。
+もし、追加依頼をいただいても、即対応できる訳ではないためご注意ください。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fanlistener.github.io/accas/overview/" /><meta property="article:section" content="" />
+<meta property="article:published_time" content="2022-02-01T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-02-01T00:00:00&#43;00:00" /><meta property="og:site_name" content="Actor Caster" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="概要"/>
+<meta name="twitter:description" content="What 　Actor Caster(AcCas) とは、コメントとユーザ情報をもとに、立ち絵素材と読み上げエンジンを組み合わせて、画面に立ち絵を表示・読み上げするソフトウェアです。
+日本語的な読み方は アクターキャスター または アクキャス と読みます。
+　Youtubeパートナープログラム(以下、YPP)などの収益化を有効にした状態での利用も想定しており、エンジンや立ち絵はYPPでの利用可能と記載があるもの、もしくは個別で許可をいただいたものに限定しています。
+　そのため「商用利用禁止」などの記載があるエンジン、立ち絵は原則利用しておりません。
+Why 　「配信でコメントしてくれる人を声と絵で具現化し、新しい紲を作り出す」 といった紲星あかり創作活動の一環。配信を見た人から新しい読み上げ実況者を生み出すことも目論んでいる
+という設定です。
+実際は24時間以上配信で0コメントという「オン会0人」を記録した、声なし配信者がライブ配信で「どうしたらコメントを継続的に貰えるか」を考えたことが製作のきっかけです。ただ単にｱｶﾘﾁｬﾝｶﾜｲｲﾔｯﾀｰがやりたかったとか、某エンジンのAPI提供が2022年にありそうだからとかもあります。
+読み上げエンジンの追加条件  動画投稿サイトの収益化を有効にした状態での利用が認められていること 音声出力の外部連携機能があること 動画投稿サイトの収益化を有効にした状態で利用できる立ち絵があること  立ち絵の追加条件  性的な表現など一般的な動画投稿サイトで禁止されていない立ち絵であること 動画投稿サイトで収益化を有効にした状態での利用が認められていること 立ち絵用に作られた素材であること  ※「動画投稿サイト」については、今のところYoutubeのみに限定しています。
+謝辞など 　本ソフトウェアは各読み上げエンジン、および立ち絵素材により構成されたソフトウェアとなっております。そのため、各コンテンツを提供されているクリエイターの方々には大変感謝しております。
+コンテンツの利用規約を一読し、fanlistener(ふぁん) 個人の解釈のもと利用しております。
+　もし、著作者の方で利用規約に反していると判断された場合、YoutubeチャンネルのメールアドレスやTwitterのダイレクトまでご連絡ください。
+場合によっては該当コンテンツ利用の停止も検討いたします。
+その他 　ソース公開は今のところ予定していません。頒布するために許可が必要そうなものがあったりとか、公開できるレベルにするまで準備が面倒だからとか、 規模の割にテストコードも書いてないポンコツだからとか理由は色々とあります。
+　エンジンに文字列を読み込ませる部分や、目パチや口パクなどを含めた一連のアニメーション部分、立ち絵の切り替え処理などは全てふぁんが独自に作っているので、1つ立ち絵を追加するにも結構時間がかかります。
+もし、追加依頼をいただいても、即対応できる訳ではないためご注意ください。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "概要",
+      "item": "https://fanlistener.github.io/accas/overview/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "概要",
+  "name": "概要",
+  "description": "What 　Actor Caster(AcCas) とは、コメントとユーザ情報をもとに、立ち絵素材と読み上げエンジンを組み合わせて、画面に立ち絵を表示・読み上げするソフトウェアです。\n日本語的な読み方は アクターキャスター または アクキャス と読みます。\n　Youtubeパートナープログラム(以下、YPP)などの収益化を有効にした状態での利用も想定しており、エンジンや立ち絵はYPPでの利用可能と記載があるもの、もしくは個別で許可をいただいたものに限定しています。\n　そのため「商用利用禁止」などの記載があるエンジン、立ち絵は原則利用しておりません。\nWhy 　「配信でコメントしてくれる人を声と絵で具現化し、新しい紲を作り出す」 といった紲星あかり創作活動の一環。配信を見た人から新しい読み上げ実況者を生み出すことも目論んでいる\nという設定です。\n\r実際は24時間以上配信で0コメントという「オン会0人」を記録した、声なし配信者がライブ配信で「どうしたらコメントを継続的に貰えるか」を考えたことが製作のきっかけです。ただ単にｱｶﾘﾁｬﾝｶﾜｲｲﾔｯﾀｰがやりたかったとか、某エンジンのAPI提供が2022年にありそうだからとかもあります。\r\n読み上げエンジンの追加条件  動画投稿サイトの収益化を有効にした状態での利用が認められていること 音声出力の外部連携機能があること 動画投稿サイトの収益化を有効にした状態で利用できる立ち絵があること  立ち絵の追加条件  性的な表現など一般的な動画投稿サイトで禁止されていない立ち絵であること 動画投稿サイトで収益化を有効にした状態での利用が認められていること 立ち絵用に作られた素材であること  ※「動画投稿サイト」については、今のところYoutubeのみに限定しています。\n謝辞など 　本ソフトウェアは各読み上げエンジン、および立ち絵素材により構成されたソフトウェアとなっております。そのため、各コンテンツを提供されているクリエイターの方々には大変感謝しております。\nコンテンツの利用規約を一読し、fanlistener(ふぁん) 個人の解釈のもと利用しております。\n　もし、著作者の方で利用規約に反していると判断された場合、YoutubeチャンネルのメールアドレスやTwitterのダイレクトまでご連絡ください。\n場合によっては該当コンテンツ利用の停止も検討いたします。\nその他 　ソース公開は今のところ予定していません。頒布するために許可が必要そうなものがあったりとか、公開できるレベルにするまで準備が面倒だからとか、 規模の割にテストコードも書いてないポンコツだからとか理由は色々とあります。\n　エンジンに文字列を読み込ませる部分や、目パチや口パクなどを含めた一連のアニメーション部分、立ち絵の切り替え処理などは全てふぁんが独自に作っているので、1つ立ち絵を追加するにも結構時間がかかります。\nもし、追加依頼をいただいても、即対応できる訳ではないためご注意ください。",
+  "keywords": [
+    
+  ],
+  "articleBody": "What 　Actor Caster(AcCas) とは、コメントとユーザ情報をもとに、立ち絵素材と読み上げエンジンを組み合わせて、画面に立ち絵を表示・読み上げするソフトウェアです。\n日本語的な読み方は アクターキャスター または アクキャス と読みます。\n　Youtubeパートナープログラム(以下、YPP)などの収益化を有効にした状態での利用も想定しており、エンジンや立ち絵はYPPでの利用可能と記載があるもの、もしくは個別で許可をいただいたものに限定しています。\n　そのため「商用利用禁止」などの記載があるエンジン、立ち絵は原則利用しておりません。\nWhy 　「配信でコメントしてくれる人を声と絵で具現化し、新しい紲を作り出す」 といった紲星あかり創作活動の一環。配信を見た人から新しい読み上げ実況者を生み出すことも目論んでいる\nという設定です。\n\r実際は24時間以上配信で0コメントという「オン会0人」を記録した、声なし配信者がライブ配信で「どうしたらコメントを継続的に貰えるか」を考えたことが製作のきっかけです。ただ単にｱｶﾘﾁｬﾝｶﾜｲｲﾔｯﾀｰがやりたかったとか、某エンジンのAPI提供が2022年にありそうだからとかもあります。\r\n読み上げエンジンの追加条件  動画投稿サイトの収益化を有効にした状態での利用が認められていること 音声出力の外部連携機能があること 動画投稿サイトの収益化を有効にした状態で利用できる立ち絵があること  立ち絵の追加条件  性的な表現など一般的な動画投稿サイトで禁止されていない立ち絵であること 動画投稿サイトで収益化を有効にした状態での利用が認められていること 立ち絵用に作られた素材であること  ※「動画投稿サイト」については、今のところYoutubeのみに限定しています。\n謝辞など 　本ソフトウェアは各読み上げエンジン、および立ち絵素材により構成されたソフトウェアとなっております。そのため、各コンテンツを提供されているクリエイターの方々には大変感謝しております。\nコンテンツの利用規約を一読し、fanlistener(ふぁん) 個人の解釈のもと利用しております。\n　もし、著作者の方で利用規約に反していると判断された場合、YoutubeチャンネルのメールアドレスやTwitterのダイレクトまでご連絡ください。\n場合によっては該当コンテンツ利用の停止も検討いたします。\nその他 　ソース公開は今のところ予定していません。頒布するために許可が必要そうなものがあったりとか、公開できるレベルにするまで準備が面倒だからとか、 規模の割にテストコードも書いてないポンコツだからとか理由は色々とあります。\n　エンジンに文字列を読み込ませる部分や、目パチや口パクなどを含めた一連のアニメーション部分、立ち絵の切り替え処理などは全てふぁんが独自に作っているので、1つ立ち絵を追加するにも結構時間がかかります。\nもし、追加依頼をいただいても、即対応できる訳ではないためご注意ください。\n",
+  "wordCount" : "36",
+  "inLanguage": "ja",
+  "datePublished": "2022-02-01T00:00:00Z",
+  "dateModified": "2022-02-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "fanlistener"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fanlistener.github.io/accas/overview/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Actor Caster",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fanlistener.github.io/accas/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://fanlistener.github.io/accas" accesskey="h" title="Actor Caster (Alt + H)">Actor Caster</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://fanlistener.github.io/accas/overview/" title="概要">
+                    <span class="active">概要</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://fanlistener.github.io/accas/description/" title="説明書">
+                    <span>説明書</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://fanlistener.github.io/accas/content/" title="利用コンテンツ">
+                    <span>利用コンテンツ</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://fanlistener.github.io/accas">Home</a></div>
+    <h1 class="post-title">
+      概要
+    </h1>
+  </header> 
+  <div class="post-content"><h2 id="what">What<a hidden class="anchor" aria-hidden="true" href="#what">#</a></h2>
+<p>　<strong>Actor Caster(AcCas)</strong> とは、コメントとユーザ情報をもとに、立ち絵素材と読み上げエンジンを組み合わせて、画面に立ち絵を表示・読み上げするソフトウェアです。<br>
+　日本語的な読み方は <strong>アクターキャスター</strong> または <strong>アクキャス</strong> と読みます。</p>
+<p>　Youtubeパートナープログラム(以下、YPP)などの収益化を有効にした状態での利用も想定しており、エンジンや立ち絵はYPPでの利用可能と記載があるもの、もしくは個別で許可をいただいたものに限定しています。</p>
+<p>　そのため「商用利用禁止」などの記載があるエンジン、立ち絵は原則利用しておりません。</p>
+<h2 id="why">Why<a hidden class="anchor" aria-hidden="true" href="#why">#</a></h2>
+<p>　<strong>「配信でコメントしてくれる人を声と絵で具現化し、新しい紲を作り出す」</strong> といった<strong>紲星あかり創作活動の一環</strong>。配信を見た人から新しい読み上げ実況者を生み出すことも目論んでいる</p>
+<p>という設定です。</p>
+<p><code> 実際は24時間以上配信で0コメントという「オン会0人」を記録した、声なし配信者がライブ配信で「どうしたらコメントを継続的に貰えるか」を考えたことが製作のきっかけです。ただ単にｱｶﾘﾁｬﾝｶﾜｲｲﾔｯﾀｰがやりたかったとか、某エンジンのAPI提供が2022年にありそうだからとかもあります。 </code></p>
+<h2 id="読み上げエンジンの追加条件">読み上げエンジンの追加条件<a hidden class="anchor" aria-hidden="true" href="#読み上げエンジンの追加条件">#</a></h2>
+<ul>
+<li>動画投稿サイトの収益化を有効にした状態での利用が認められていること</li>
+<li>音声出力の外部連携機能があること</li>
+<li>動画投稿サイトの収益化を有効にした状態で利用できる立ち絵があること</li>
+</ul>
+<h2 id="立ち絵の追加条件">立ち絵の追加条件<a hidden class="anchor" aria-hidden="true" href="#立ち絵の追加条件">#</a></h2>
+<ul>
+<li>性的な表現など一般的な動画投稿サイトで禁止されていない立ち絵であること</li>
+<li>動画投稿サイトで収益化を有効にした状態での利用が認められていること</li>
+<li>立ち絵用に作られた素材であること</li>
+</ul>
+<p>※「動画投稿サイト」については、今のところYoutubeのみに限定しています。</p>
+<h2 id="謝辞など">謝辞など<a hidden class="anchor" aria-hidden="true" href="#謝辞など">#</a></h2>
+<p>　本ソフトウェアは各読み上げエンジン、および立ち絵素材により構成されたソフトウェアとなっております。そのため、各コンテンツを提供されているクリエイターの方々には大変感謝しております。<br>
+　コンテンツの利用規約を一読し、<strong>fanlistener(ふぁん)</strong> 個人の解釈のもと利用しております。</p>
+<p>　もし、著作者の方で利用規約に反していると判断された場合、YoutubeチャンネルのメールアドレスやTwitterのダイレクトまでご連絡ください。<br>
+　場合によっては該当コンテンツ利用の停止も検討いたします。</p>
+<h2 id="その他">その他<a hidden class="anchor" aria-hidden="true" href="#その他">#</a></h2>
+<p>　ソース公開は今のところ予定していません。頒布するために許可が必要そうなものがあったりとか、公開できるレベルにするまで準備が面倒だからとか、 規模の割にテストコードも書いてないポンコツだからとか理由は色々とあります。</p>
+<p>　エンジンに文字列を読み込ませる部分や、目パチや口パクなどを含めた一連のアニメーション部分、立ち絵の切り替え処理などは全てふぁんが独自に作っているので、1つ立ち絵を追加するにも結構時間がかかります。<br>
+　もし、追加依頼をいただいても、即対応できる訳ではないためご注意ください。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://fanlistener.github.io/accas">Actor Caster</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
