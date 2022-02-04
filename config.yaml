@@ -5,7 +5,7 @@ defaultContentLanguage: ja
 publishDir: docs
 paginate: 5
 title: Actor Caster
-theme: PaperMod
+theme: hugo-PaperMod
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
