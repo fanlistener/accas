@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Actor Caster</title>
+    <link>https://fanlistener.github.io/accas/posts/</link>
+    <description>Recent content in Posts on Actor Caster</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 06 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fanlistener.github.io/accas/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AcCas初配信</title>
+      <link>https://fanlistener.github.io/accas/posts/20220202/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fanlistener.github.io/accas/posts/20220202/</guid>
+      <description>初のAcCas配信。
+準社畜が空き時間を最大限に活用して約3カ月、自分ができる範囲で欲しいと思った機能を次々に詰め込んで完成したソフトになってます。
+コメントする動機になってくれれば嬉しい訳ですが。
+(初配信15時間、0コメ)</description>
+    </item>
+    
+  </channel>
+</rss>
