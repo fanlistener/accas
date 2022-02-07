@@ -22,6 +22,10 @@ https://aivoice.jp/akari/
 - AquesTalk1  
 https://www.a-quest.com/products/aquestalk_1.html
 
+### 株式会社AHS
+- 弦巻マキ(日)  
+  https://www.ah-soft.com/cevio/maki/index.html
+
 ### VOICEVOX
 - ずんだもん
 - 四国めたん  
